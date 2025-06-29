@@ -9,8 +9,7 @@ const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZDMzNzliMDkzNTVhZDQwYjJjM2IwMmE2ZGE5OTkxNCIsIm5iZiI6MTc1MTEyMTQ3NC42Niwic3ViIjoiNjg1ZmZlNDJmMDAyMDU4MDdlMGQ4ZTdlIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.1KFaAg4O_KhMzheWDyFRzmkxbcNcUolGdKtEnU589gc",
+    Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
   },
 };
 
@@ -51,6 +50,7 @@ export default function App() {
 
   useEffect(() => {
     fetchMovies(debounceSearch);
+    console.log(import.meta.env.VITE_TESTING);
   }, [debounceSearch]);
 
   return (
