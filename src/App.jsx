@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
+import MovieCards from "./components/MovieCards";
 
 const API_URL =
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
@@ -13,6 +14,7 @@ const API_OPTIONS = {
 };
 
 export default function App() {
+  const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
@@ -58,9 +60,9 @@ export default function App() {
             <p>Error: {errorMsg || `Failed`}</p>
           ) : (
             movies && (
-              <ul>
+              <ul className="flex flex-wrap justify-center gap-6">
                 {movies.map((movie) => (
-                  <p key={movie.id}>{movie.title}</p>
+                  <MovieCards key={movie.id} movie={movie} />
                 ))}
               </ul>
             )
